@@ -1,0 +1,18 @@
+<section class="carousel" aria-label="Galería de fotografías">
+  <div class="carousel__photos">
+    @for (foto of fotos(); track $index; let i = $index) {
+      <figure class="carousel__slide" [class.carousel__slide--active]="indice() === i" [attr.aria-hidden]="indice() !== i">
+        <img [src]="foto.src" [alt]="indice() === i ? foto.alt : ''" />
+        @if (foto.titulo) { <figcaption>{{ foto.titulo }}</figcaption> }
+      </figure>
+    }
+  </div>
+  <div class="carousel__dots" aria-label="Seleccionar fotografía">
+    @for (foto of fotos(); track $index; let i = $index) {
+      <button type="button" class="carousel__dot" [class.carousel__dot--active]="indice() === i"
+        [attr.aria-label]="'Mostrar fotografía ' + (i + 1)"
+        [attr.aria-current]="indice() === i ? 'true' : null"
+        (click)="seleccionar(i)"></button>
+    }
+  </div>
+</section>
