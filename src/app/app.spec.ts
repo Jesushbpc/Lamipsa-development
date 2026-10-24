@@ -13,11 +13,11 @@ describe('App', () => {
     expect(fixture.componentInstance).toBeTruthy();
   });
 
-  it('should start without demo content', async () => {
+  it('should render the initial header without a menu', async () => {
     const fixture = TestBed.createComponent(App);
     await fixture.whenStable();
     const root = fixture.nativeElement as HTMLElement;
-    expect(root.querySelector('router-outlet')).not.toBeNull();
-    expect(root.textContent?.trim()).toBe('');
+    expect(root.querySelector('app-header img')?.getAttribute('src')).toBe('/images/lamip-logo-reference.jpg');
+    expect(root.querySelector('.site-header__menu')?.textContent?.trim()).toBe('');
   });
 });
