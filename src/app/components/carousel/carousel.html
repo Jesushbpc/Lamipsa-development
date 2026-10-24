@@ -1,22 +1,39 @@
-<section class="carousel" aria-label="Galería de fotografías">
-  <div class="carousel__photos">
-    @for (foto of fotos(); track $index; let i = $index) {
-      <figure class="carousel__slide" [class.carousel__slide--active]="indice() === i" [attr.aria-hidden]="indice() !== i">
-        <img [src]="foto.src" [alt]="indice() === i ? foto.alt : ''" />
-        @if (foto.titulo) { <figcaption>{{ foto.titulo }}</figcaption> }
-      </figure>
-    }
+<section class="carousel" aria-label="Galería de productos y especificaciones">
+  <div class="carousel__gallery">
+    <div class="carousel__photos">
+      @for (foto of fotos(); track $index; let i = $index) {
+        <figure class="carousel__slide" [class.carousel__slide--active]="indice() === i" [attr.aria-hidden]="indice() !== i">
+          <img [src]="foto.src" [alt]="indice() === i ? foto.alt : ''" />
+          @if (foto.titulo) { <figcaption>{{ foto.titulo }}</figcaption> }
+        </figure>
+      }
+    </div>
+    <div class="carousel__dots" aria-label="Controles de la galería">
+      @for (foto of fotos(); track $index; let i = $index) {
+        <button type="button" class="carousel__dot" [class.carousel__dot--active]="indice() === i"
+          [attr.aria-label]="'Mostrar fotografía ' + (i + 1)"
+          [attr.aria-current]="indice() === i ? 'true' : null"
+          (click)="seleccionar(i)"></button>
+      }
+      <button type="button" class="carousel__toggle"
+        [attr.aria-label]="pausado() ? 'Reanudar carrusel' : 'Pausar carrusel'"
+        [attr.aria-pressed]="pausado()"
+        (click)="alternarPausa()">{{ pausado() ? '▶' : 'Ⅱ' }}</button>
+    </div>
   </div>
-  <div class="carousel__dots" aria-label="Controles de la galería">
-    @for (foto of fotos(); track $index; let i = $index) {
-      <button type="button" class="carousel__dot" [class.carousel__dot--active]="indice() === i"
-        [attr.aria-label]="'Mostrar fotografía ' + (i + 1)"
-        [attr.aria-current]="indice() === i ? 'true' : null"
-        (click)="seleccionar(i)"></button>
+  <aside class="carousel__specs" aria-label="Especificaciones del producto">
+    <h2>{{ tituloEspecificaciones() }}</h2>
+    @if (especificaciones().length) {
+      <dl>
+        @for (item of especificaciones(); track $index) {
+          <div class="carousel__spec-row">
+            <dt>{{ item.key }}</dt>
+            <dd>{{ item.value }}</dd>
+          </div>
+        }
+      </dl>
+    } @else {
+      <p class="carousel__empty">Especificaciones próximamente.</p>
     }
-    <button type="button" class="carousel__toggle"
-      [attr.aria-label]="pausado() ? 'Reanudar carrusel' : 'Pausar carrusel'"
-      [attr.aria-pressed]="pausado()"
-      (click)="alternarPausa()">{{ pausado() ? '▶' : 'Ⅱ' }}</button>
-  </div>
+  </aside>
 </section>
