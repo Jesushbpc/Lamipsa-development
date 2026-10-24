@@ -1,4 +1,4 @@
-<section class="widget">
+<section class="widget" [class.widget--primario]="jerarquia() === 'primario'" [class.widget--secundario]="jerarquia() === 'secundario'" [class.widget--terciario]="jerarquia() === 'terciario'">
   <img class="widget__image" [src]="imagen()" [alt]="imagenAlt()" />
   <div class="widget__content">
     <h2>{{ titulo() }}</h2>
