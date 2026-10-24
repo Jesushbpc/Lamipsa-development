@@ -5,7 +5,7 @@
 .site-header {
   display: flex;
   align-items: center;
-  min-height: 90px;
+  height: 30vh;
   background: #fff;
 }
 
@@ -30,10 +30,6 @@
 }
 
 @media (max-width: 600px) {
-  .site-header {
-    min-height: 72px;
-  }
-
   .site-header__logo img {
     width: min(100px, 90%);
   }
