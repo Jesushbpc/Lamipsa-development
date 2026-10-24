@@ -3,9 +3,7 @@ import { App } from './app';
 
 describe('App', () => {
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [App],
-    }).compileComponents();
+    await TestBed.configureTestingModule({ imports: [App] }).compileComponents();
   });
 
   it('should create the app', () => {
@@ -13,11 +11,11 @@ describe('App', () => {
     expect(fixture.componentInstance).toBeTruthy();
   });
 
-  it('should render the initial header without a menu', async () => {
+  it('should display the logo and navigation links', async () => {
     const fixture = TestBed.createComponent(App);
     await fixture.whenStable();
     const root = fixture.nativeElement as HTMLElement;
-    expect(root.querySelector('app-header img')?.getAttribute('src')).toBe('/images/lamip-logo-reference.jpg');
-    expect(root.querySelector('.site-header__menu')?.textContent?.trim()).toBe('');
+    expect(root.querySelector('app-header img')?.getAttribute('src')).toBe('/images/lamip-logo.webp');
+    expect(root.querySelectorAll('.site-header__menu a').length).toBe(6);
   });
 });
