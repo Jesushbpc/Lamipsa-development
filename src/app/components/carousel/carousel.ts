@@ -6,6 +6,11 @@ export interface CarouselSlide {
   titulo?: string;
 }
 
+export interface Especificacion {
+  key: string;
+  value: string;
+}
+
 @Component({
   selector: 'app-carousel',
   standalone: true,
@@ -14,6 +19,8 @@ export interface CarouselSlide {
 })
 export class Carousel implements OnInit, OnDestroy {
   readonly fotos = input.required<CarouselSlide[]>();
+  readonly tituloEspecificaciones = input<string>('Especificaciones');
+  readonly especificaciones = input<Especificacion[]>([]);
   readonly indice = signal(0);
   readonly pausado = signal(false);
   private timer?: ReturnType<typeof setInterval>;
