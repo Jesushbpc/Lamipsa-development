@@ -15,19 +15,22 @@ export interface CarouselSlide {
 export class Carousel implements OnInit, OnDestroy {
   readonly fotos = input.required<CarouselSlide[]>();
   readonly indice = signal(0);
+  readonly pausado = signal(false);
   private timer?: ReturnType<typeof setInterval>;
 
   ngOnInit(): void {
     this.timer = setInterval(() => {
       const total = this.fotos().length;
-      if (total > 1) this.indice.update(i => (i + 1) % total);
+      if (!this.pausado() && total > 1) this.indice.update(i => (i + 1) % total);
     }, 2000);
   }
 
   seleccionar(index: number): void {
-    if (index >= 0 && index < this.fotos().length) {
-      this.indice.set(index);
-    }
+    if (index >= 0 && index < this.fotos().length) this.indice.set(index);
+  }
+
+  alternarPausa(): void {
+    this.pausado.update(valor => !valor);
   }
 
   ngOnDestroy(): void {
