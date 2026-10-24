@@ -1,9 +1,10 @@
-:host { display: block; }
+:host { display: block; width: 100%; }
 
 .widget {
   background: #111;
   color: #fff;
-  min-height: 320px;
+  width: 100vw;
+  height: 100vh;
   padding: 48px 24px;
   display: flex;
   flex-direction: column;
@@ -17,7 +18,7 @@
 .widget__image {
   display: block;
   width: min(100%, 560px);
-  max-height: 320px;
+  max-height: 40vh;
   object-fit: contain;
 }
 
@@ -25,6 +26,7 @@
 
 .widget h2 {
   margin: 0 0 12px;
+  color: #ff6600;
   font-size: clamp(28px, 4vw, 48px);
   line-height: 1.1;
   font-weight: 800;
