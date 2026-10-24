@@ -88,3 +88,16 @@
   .widget--secundario p { font-size: clamp(12px, 2.8vw, 16px); }
   .widget--secundario .widget__details { padding: 9px 12px; font-size: 12px; }
 }
+
+/* Marco blanco interior para las fichas de productos secundarios. */
+.widget--secundario {
+  background: #fff;
+  color: #111;
+  border: 16px solid #fff;
+  background-clip: padding-box;
+}
+.widget--secundario .widget__content { color: #111; }
+.widget--secundario p { color: #333; }
+@media (max-width: 600px) {
+  .widget--secundario { border-width: 10px; }
+}
