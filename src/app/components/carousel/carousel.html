@@ -7,12 +7,16 @@
       </figure>
     }
   </div>
-  <div class="carousel__dots" aria-label="Seleccionar fotografía">
+  <div class="carousel__dots" aria-label="Controles de la galería">
     @for (foto of fotos(); track $index; let i = $index) {
       <button type="button" class="carousel__dot" [class.carousel__dot--active]="indice() === i"
         [attr.aria-label]="'Mostrar fotografía ' + (i + 1)"
         [attr.aria-current]="indice() === i ? 'true' : null"
         (click)="seleccionar(i)"></button>
     }
+    <button type="button" class="carousel__toggle"
+      [attr.aria-label]="pausado() ? 'Reanudar carrusel' : 'Pausar carrusel'"
+      [attr.aria-pressed]="pausado()"
+      (click)="alternarPausa()">{{ pausado() ? '▶' : 'Ⅱ' }}</button>
   </div>
 </section>
