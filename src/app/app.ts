@@ -12,7 +12,7 @@ import { Carousel, CarouselSlide } from './components/carousel/carousel';
 })
 export class App {
   readonly fotosCarrusel: CarouselSlide[] = [
-    { src: '/images/lamip-logo.webp', alt: 'Logotipo Industrial LAMIP', titulo: 'Industrial LAMIP' },
-    { src: '/images/lamip-logo-reference.jpg', alt: 'Identidad Industrial LAMIP', titulo: 'Soluciones industriales' },
+    { src: '/images/malla_uno.jpg', alt: 'Malla industrial LAMIP', titulo: 'Mallas de calidad' },
+    { src: '/images/malla_dos.jpg', alt: 'Productos de malla metálica', titulo: 'Soluciones industriales' },
   ];
 }
