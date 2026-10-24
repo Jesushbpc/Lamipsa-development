@@ -3,8 +3,6 @@
 .widget {
   background: #111;
   color: #fff;
-  width: 100vw;
-  height: 100vh;
   padding: 48px 24px;
   display: flex;
   flex-direction: column;
@@ -13,13 +11,20 @@
   text-align: center;
   gap: 24px;
   box-sizing: border-box;
+  max-width: 100%;
+  overflow: hidden;
 }
+
+.widget--primario { width: 100vw; height: 100vh; }
+.widget--secundario { width: 100vw; height: 50vh; }
+.widget--terciario { width: 50vw; height: 50vh; }
 
 .widget__image {
   display: block;
   width: min(100%, 560px);
-  max-height: 40vh;
+  max-height: 40%;
   object-fit: contain;
+  min-height: 0;
 }
 
 .widget__content { max-width: 720px; }
